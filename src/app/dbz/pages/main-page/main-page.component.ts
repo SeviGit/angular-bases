@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Charpater } from '../../interfaces/charapter.interface';
+import { Character } from '../../interfaces/character.interface';
+import { DbzService } from '../../services/dbz.service';
 
 @Component({
   selector: 'app-dbz-main-page',
@@ -7,15 +8,18 @@ import { Charpater } from '../../interfaces/charapter.interface';
   styleUrl: './main-page.component.css'
 })
 export class MainPageComponent {
-public characters : Charpater [] = [{
-  name: 'Krillin',
-  power: 1000
-},{
-    name: 'Goku',
-    power: 9500
-  },{
-    name: 'Vegeta',
-    power: 7500
+
+  constructor(private dbzService: DbzService) { }
+
+  get characters(): Character[] {
+    return [...this.dbzService.characters];
   }
-];
+
+  onDeleteCharacter(id: string): void {
+    this.dbzService.deleteCharacterById(id);
+  }
+
+  onNewCharacter(character: Character): void {
+    this.dbzService.addCharacter(character);
+  }
 }

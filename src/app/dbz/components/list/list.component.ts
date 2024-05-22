@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { Charpater } from '../../interfaces/charapter.interface';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Character } from '../../interfaces/character.interface';
 
 @Component({
   selector: 'dbz-list',
@@ -8,14 +8,22 @@ import { Charpater } from '../../interfaces/charapter.interface';
 })
 export class ListComponent {
 
+  @Output()
+  // public onDeleteCharacter: EventEmitter<number> = new EventEmitter();
+  public onDeleteCharacter = new EventEmitter<string>();
 
   @Input()
-public charapterList : Charpater[] = [
-  {
-    name: 'Trunk',
-    power: 10
+  public charapterList: Character[] = [
+    {
+      name: 'Trunk',
+      power: 10
+    }
+  ]
+
+  deleteCharacter(id?: string): void {
+    if (!id) return;
+    this.onDeleteCharacter.emit(id);
   }
-]
 
 }
 
