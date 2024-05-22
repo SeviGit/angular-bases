@@ -6,6 +6,8 @@ import { CounterModule } from './counter/counter.module';
 import { HeroesModule } from './heroes/heroes.module';
 
 import { AppComponent } from './app.component';
+import { DbzModule } from './dbz/dbz.module';
+
 
 
 
@@ -20,6 +22,7 @@ import { AppComponent } from './app.component';
     CounterModule,
     HeroesModule,
     CommonModule,
+    DbzModule
   ],
   providers: [],
   bootstrap: [AppComponent]

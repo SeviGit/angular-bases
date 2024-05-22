@@ -1,0 +1,25 @@
+<h4>Listado</h4>
+<ul class="list-group">
+  <li *ngFor="let item of charapterList;
+  let i = index;
+  let isFirst = first;
+  let isLast = last;
+  let isEven = even;
+  let isOdd = odd;
+  "
+  class="list-group-item "
+  [ngClass]="{
+   'list-group-item-success' : isFirst,
+   'list-group-item-dark' : isLast
+  }">
+
+    <span class="text-primary">{{ i + 1 }}. </span>
+    <span>{{ item.name }}</span>
+    - <strong>Power: </strong>
+    <span>({{ item.power }})</span>
+
+    <span></span>
+    <span></span>
+  </li>
+
+</ul>
